@@ -1,0 +1,69 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+  <title>No Title</title>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+  <link rel="stylesheet" type="text/css" href="" />
+  <script type="text/javascript">
+    function rellenaDatos() {
+      var peticion
+
+
+      if (window.XMLHttpRequest) {
+        peticion = new XMLHttpRequest();
+      } else if (window.ActiveXObject) {
+        peticion = ActiveXObject("Microsoft.XMLHTTP");
+      }
+
+      datos = {}
+      datos.nombre = document.forms.datos.nombre.value;
+      datos.apellidos = document.forms.datos.apellidos.value;
+      datos.telefono = document.forms.datos.telefono.value;
+
+
+      peticion.onreadystatechange = function () {
+        if (peticion.readyState == 4) {
+          if (peticion.status == 200) {
+            // console.log(peticion.responseText )
+            var datos = JSON.parse(peticion.responseText)
+            muestraDatos(datos)
+          }
+        }
+      }
+
+      peticion.open("POST", "ejercicio.php");
+      peticion.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      peticion.send("datos=" + JSON.stringify(datos));
+    }
+
+
+    function muestraDatos(datos) {
+      document.forms.datos.nombre.value = datos.nombre
+      document.forms.datos.apellidos.value = datos.apellidos
+      document.forms.datos.telefono.value = datos.telefono
+    }
+
+
+    function init() {
+      document.forms.datos.rellena.addEventListener("click", rellenaDatos)
+    }
+
+    window.addEventListener("load", init)
+  </script>
+</head>
+
+<body>
+  <h1>Datos aleatorios</h1>
+
+  <form name="datos">
+    <p><label>Nombre</label><input type="text" name="nombre"></p>
+    <p><label>Apellidos</label><input type="text" name="apellidos"></p>
+    <p><label>Telefono</label><input type="text" name="telefono"></p>
+    <input type="button" name="rellena" value="rellena"></p>
+  </form>
+
+
+</body>
+
+</html>

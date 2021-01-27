@@ -1,0 +1,38 @@
+* {
+    background-color: #E6E9F0;
+    color: #212B38;
+}
+
+table {
+    border-collapse: collapse;
+    margin: 2% auto;
+    width: 50%;
+}
+
+th, td {
+    border: 1px solid black;
+    padding: 5px
+}
+
+th {
+    background: #ffdc84;
+    font-weight: bolder;
+}
+
+td {
+    background: #fff1c9;
+}
+
+h2 {
+    text-align: center;
+}
+
+ul {
+    list-style-type: none;
+    text-align: left;
+    margin-left: 21%;
+}
+
+li {
+    margin-bottom: 6px;
+}

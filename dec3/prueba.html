@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Flexbox 0 — starting code</title>
+    <style>
+        html {
+            font-family: sans-serif;
+        }
+
+        body {
+            margin: 0;
+        }
+
+        header {
+            background: purple;
+            height: 100px;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            line-height: 100px;
+            margin: 0;
+        }
+
+        article {
+            padding: 10px;
+            margin: 10px;
+            background: aqua;
+        }
+
+        section {
+            display: flex;
+        }
+
+        article {
+            flex-flow: column wrap;
+        }
+    </style>
+</head>
+
+<body>
+    <input id="he" type="submit" value="prueba">
+    <script>
+        document.getElementById("he").addEventListener("click", prueba);
+
+        function prueba(algo) {
+            if (algo != undefined) {
+                alert("pues si");
+            } else {
+                alert("pues no");
+            }
+        }
+    </script>
+</body>
+
+</html>
