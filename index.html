@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #content{
+            width:50%;
+            margin:0 auto;
+        }
+
+        form > div{
+            margin-top:20px;
+        }
+
+        #precio{
+            font-size:1.5em;
+            border:1px solid silver;
+            border-radius: 5px;
+            text-align: center;
+            padding:10px;
+        }
+    </style>
+    <script>
+        let cuota = 15
+
+        function actualizaCuota() {
+            let precio = document.getElementById("precio")
+            precio.innerHTML = "Cuota final " + cuota + " €"
+        }
+
+
+
+        window.addEventListener("load", function () {
+
+            actualizaCuota()
+
+            let checks = document.querySelectorAll("input[type=checkbox]")
+            for (let i = 0; i < checks.length; i++) {
+                checks[i].addEventListener("change", function () {
+                    let servicio = this.value
+                    let valor = this.checked == 1
+                    console.log("El servicio " + servicio + " ha cambiado a " + valor)
+
+                    fetch("servidor.php?servicio=" + servicio)
+                        .then(function (respuesta) {
+                            return respuesta.text()
+                        }).then(function (precio) {
+                            if (valor) {
+                                cuota+=parseInt(precio)
+                                actualizaCuota()
+                            } else {
+                                cuota-=parseInt(precio)
+                                actualizaCuota()
+                            }
+                        })
+                })
+            }
+        })
+
+    </script>
+
+</head>
+
+<body>
+    <div id="content">
+        <h1>Calcula tu cuota</h1>
+        <p>Selecciona los servicios que quieres disfrutar para calcular el precio final de tu cuota:</p>
+        <form>
+            <div>
+                <input type="checkbox" id="padel" value="padel" />
+                <label>Padel</label>
+            </div>
+            <div>
+                <input type="checkbox" id="padel" value="tenis" />
+                <label>Tenis</label>
+            </div>
+            <div>
+                <input type="checkbox" id="padel" value="natacion" />
+                <label>Nado Libre</label>
+            </div>
+            <div>
+                <input type="checkbox" id="padel" value="aerobic" />
+                <label>Aeróbic</label>
+            </div>
+            <div>
+                <input type="checkbox" id="padel" value="sauna" />
+                <label>Sauna</label>
+            </div>
+            <div>
+                <input type="checkbox" id="padel" value="acuagim" />
+                <label>Acuagim</label>
+            </div>
+            <div>
+                <input type="checkbox" id="padel" value="cardio" />
+                <label>Cardio</label>
+            </div>
+            <div id="precio"></div>
+        </form>
+
+
+    </div>
+</body>
+
+</html>
