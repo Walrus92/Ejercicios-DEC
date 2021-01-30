@@ -19,6 +19,6 @@ function peticion() {
             }
         }
     });
-    req.open("POST", "change_password.php");
+    req.open("POST", "4-1.php");
     req.send(null);
 }
