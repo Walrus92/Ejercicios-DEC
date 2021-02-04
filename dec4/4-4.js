@@ -22,14 +22,16 @@ function refrescar() {
 
     let params = {
         method: "POST",
-        body: JSON.stringify({
-            valor
-        })
+        /*  body: JSON.stringify({
+             valor
+         }) */
+        body: valor
     }
     fetch('./4-4.php', params).then(function (respuesta) {
-        return respuesta.json()
+        //return respuesta.json()
+        return respuesta.text()
     }).then(function (datos) {
-        console.log(datos.valor);
+        console.log(datos);
     })
     //    con XHR
     /*  let xhr = new XMLHttpRequest();
