@@ -27,12 +27,13 @@ function refrescar() {
          }) */
         body: valor
     }
-    fetch('./4-4.php', params).then(function (respuesta) {
-        //return respuesta.json()
-        return respuesta.text()
-    }).then(function (datos) {
-        console.log(datos);
-    })
+    fetch('./4-4.php', params)
+        .then(function (respuesta) {
+            //return respuesta.json()
+            return respuesta.text()
+        }).then(function (datos) {
+            console.log(datos);
+        })
     //    con XHR
     /*  let xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function () {

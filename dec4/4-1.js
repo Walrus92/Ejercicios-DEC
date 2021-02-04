@@ -5,7 +5,7 @@ boton.addEventListener("click", peticion);
 
 function peticion() {
     event.preventDefault();
-    console.log("hi");
+    console.log("hi");  
     if (window.XMLHttpRequest) {
         req = new XMLHttpRequest();
     } else if (window.ActiveXObject) {
