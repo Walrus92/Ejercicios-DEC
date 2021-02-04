@@ -1,0 +1,53 @@
+* {
+    box-sizing: border-box;
+}
+
+#cabecera {
+    font-size: 24px;
+    font-weight: bold;
+    color: rgb(255, 255, 255);
+    background-color: rgb(122, 146, 122);
+    font-family: Geneva, Tahoma;
+    text-align: center;
+    margin-bottom: 3%;
+    height: 10vh;
+    line-height: 10vh;
+}
+
+div {
+    display: flex;
+    flex-flow: column nowrap;
+    border: 1px solid green;
+    margin: 2% 25%;
+    padding: 6px;
+}
+
+div>header {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+div>input[type="button"] {
+    width: 100px;
+    display: inline-block;
+    align-self: flex-end;
+    margin-top: 5px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(122, 146, 122);
+}
+
+input[type="button"]:active {
+    animation-name: sent;
+    animation-duration: 300ms;
+    animation-fill-mode: forwards;
+}
+
+@keyframes sent{
+    from{
+
+    }to{
+        transform: rotate3d(1,-2,-5,360deg);
+        opacity: 0;
+    }
+}

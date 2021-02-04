@@ -1,4 +1,6 @@
-window.addEventListener("load", function () {
+window.addEventListener("load", init);
+
+function init() {
 
     //al cargar se envia peticion al servidor de los datos del array
     var params = {
@@ -12,32 +14,34 @@ window.addEventListener("load", function () {
         .then(function (respuesta) {
             return respuesta.json();
         }).then(function (datos) {
-            console.log(datos);
-            //creo array con los datos json de la respuesta ya parseados
-            var arrayAlumnos = datos;
-
-            //por cada alumno se creará un div con: header con su nombre, un textarea y un boton
-            for (let i = 0; i < arrayAlumnos.length; i++) {
-                let alumno = document.createElement("div");
-                alumno.innerHTML =
-                    "<header>" + arrayAlumnos[i] + '</header>' +
-                    '<textarea id="" cols="30" rows="1"></textarea>';
-                let boton = document.createElement("input");
-                boton.setAttribute("type", "button");
-
-                //añado atributo con el nombre del alumno para poder recogerlo facilmente en "enviarIncidencia()"
-                boton.setAttribute("name", arrayAlumnos[i]);
-                boton.value = "Enviar";
-
-                //cada boton tiene un eventlistener para escribir al servidor
-                boton.addEventListener("click", enviarIncidencia);
-                alumno.appendChild(boton);
-
-                document.body.appendChild(alumno);
-            }
+            //llamo a funcion escritora, pasando como parametro los datos devueltos del servidor
+            escribirTabla(datos);
         })
-})
 
+    function escribirTabla(arrayAlumnos) {
+
+        //por cada alumno se creará un div con: header con su nombre, un textarea y un boton
+        for (let i = 0; i < arrayAlumnos.length; i++) {
+            let alumno = document.createElement("div");
+            alumno.innerHTML =
+                "<header>" + arrayAlumnos[i] + '</header>' +
+                '<textarea id="" cols="30" rows="1"></textarea>';
+            let boton = document.createElement("input");
+            boton.setAttribute("type", "button");
+
+            //añado atributo con el nombre del alumno para poder recogerlo facilmente en "enviarIncidencia()"
+            boton.setAttribute("name", arrayAlumnos[i]);
+            boton.value = "Enviar";
+
+            //cada boton tiene un eventlistener para escribir al servidor
+            boton.addEventListener("click", enviarIncidencia);
+            alumno.appendChild(boton);
+
+            document.body.appendChild(alumno);
+        }
+
+    }
+}
 
 function enviarIncidencia() {
     //recojo valor del atributo con el nombre
