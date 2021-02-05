@@ -7,3 +7,8 @@ Maria		ahrahbnar
 Maria		Probando again
 Maria		Con css funco?
 Miguel		UYYeeah
+Maria		2e
+Maria		No imprime nada
+Maria		Prueba sin then en fetch
+Maria		gadgdagd
+Miguel		Ivan es feo

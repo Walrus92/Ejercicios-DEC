@@ -11,6 +11,7 @@ if ($_POST['option'] == "escribir") {
 //al cargarse la página se inicia la descarga de datos
 elseif ($_POST['option'] == "descargar") {
     $alumnos = array("Maria", "Miguel", "Matias", "Lorena", "Pedro");
+    
     $alumnos = json_encode($alumnos);
     echo $alumnos;
 }

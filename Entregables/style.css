@@ -39,15 +39,13 @@ div>input[type="button"] {
 
 input[type="button"]:active {
     animation-name: sent;
-    animation-duration: 300ms;
+    animation-duration: 200ms;
     animation-fill-mode: forwards;
 }
 
-@keyframes sent{
-    from{
-
-    }to{
-        transform: rotate3d(1,-2,-5,360deg);
-        opacity: 0;
+@keyframes sent {
+    to {
+        transform: rotate3d(1, -2, -5, 360deg);
+        transform: scale3d(0.5,0.5,10);
     }
 }

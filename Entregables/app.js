@@ -2,7 +2,7 @@ window.addEventListener("load", init);
 
 function init() {
 
-    //al cargar se envia peticion al servidor de los datos del array
+    //al cargar inicialmente se envia peticion al servidor de los datos del array
     var params = {
         method: 'POST',
         headers: {
@@ -29,7 +29,7 @@ function init() {
             let boton = document.createElement("input");
             boton.setAttribute("type", "button");
 
-            //añado atributo con el nombre del alumno para poder recogerlo facilmente en "enviarIncidencia()"
+            //añado atributo con el nombre del alumno para poder recogerlo en "enviarIncidencia()"
             boton.setAttribute("name", arrayAlumnos[i]);
             boton.value = "Enviar";
 
@@ -58,15 +58,18 @@ function enviarIncidencia() {
             headers: {
                 'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'
             },
+            //option=escribir para controlar la operacion en php
             body: "option=escribir&nombre=" + nombre + "&texto=" + texto
         }
 
         fetch("server.php", params)
-            .then(function (res) {
-                return res.text();
-            }).then(function (data) {
-                console.log(data);
-            })
+        /*    .then(function (res) {
+               return res.text();
+           }).then(function (data) {
+               console.log(data);
+           }) */
     }
+
+    //limpio el campo de texto
     this.previousSibling.value = "";
 }
