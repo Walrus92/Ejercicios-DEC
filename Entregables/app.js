@@ -15,22 +15,25 @@ function init() {
             return respuesta.json();
         }).then(function (datos) {
             //llamo a funcion escritora, pasando como parametro los datos devueltos del servidor
+            //console.log(datos);
             escribirTabla(datos);
         })
 
     function escribirTabla(arrayAlumnos) {
 
         //por cada alumno se creará un div con: header con su nombre, un textarea y un boton
+        //console.log(arrayAlumnos)
         for (let i = 0; i < arrayAlumnos.length; i++) {
             let alumno = document.createElement("div");
+            //console.log(arrayAlumnos[i].nombre)
             alumno.innerHTML =
-                "<header>" + arrayAlumnos[i] + '</header>' +
+                "<header>" + arrayAlumnos[i].nombre + '</header>' +
                 '<textarea id="" cols="30" rows="1"></textarea>';
             let boton = document.createElement("input");
             boton.setAttribute("type", "button");
 
             //añado atributo con el nombre del alumno para poder recogerlo en "enviarIncidencia()"
-            boton.setAttribute("name", arrayAlumnos[i]);
+            boton.setAttribute("name", arrayAlumnos[i].nombre);
             boton.value = "Enviar";
 
             //cada boton tiene un eventlistener para escribir al servidor

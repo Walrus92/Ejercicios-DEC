@@ -17,7 +17,8 @@ window.addEventListener('load', function () {
             var marcado = this.checked == 1;
             console.log(servicio + ' tiene el valor de ' + marcado);
 
-            req = new XMLHttpRequest();
+            
+            /* req = new XMLHttpRequest();
 
             if (req) {
                 req.onreadystatechange = function () {
@@ -38,7 +39,7 @@ window.addEventListener('load', function () {
                 req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
                 req.send('servicio=' + servicio +
                         "&nocache=" + Math.random());
-            }
+            } */
         }
     }
 })

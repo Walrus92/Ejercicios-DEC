@@ -12,3 +12,5 @@ Maria		No imprime nada
 Maria		Prueba sin then en fetch
 Maria		gadgdagd
 Miguel		Ivan es feo
+Maria		oekokg
+Manuel		Me cagoennn
