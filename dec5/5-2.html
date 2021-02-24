@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = init;
+        var ul = document.createElement("ul");
+
+        function init() {
+            var arrayAlumnos = [{
+                "nombre": "aege",
+                "apellido": "aeobamb",
+                "nota": 9
+            }, {
+                "nombre": "veoaep",
+                "apellido": "Poaevlam",
+                "nota": 5
+
+            }, {
+                "nombre": "kiko",
+                "apellido": "Gargia",
+                "nota": 7
+            }]
+            let cabecera = document.createElement("li");
+
+            let colNombre = document.createElement("button");
+            let colApellido = document.createElement("button");
+            let colNota = document.createElement("button");
+
+            colNombre.innerText = "nombre"
+            colApellido.innerText = "apellido"
+            colNota.innerText = "nota"
+
+            colNombre.onclick = ordenarLista;
+            colApellido.onclick = ordenarLista;
+            colNota.onclick = ordenarLista;
+
+            cabecera.appendChild(colNombre)
+            cabecera.appendChild(colApellido)
+            cabecera.appendChild(colNota)
+            ul.appendChild(cabecera)
+
+            imprimirAlumnos(arrayAlumnos);
+
+            function ordenarLista() {
+                event.preventDefault();
+                let opcion = this.innerText;
+                console.log(opcion);
+                arrayAlumnos.sort((a, b) => {
+                    if (a.opcion > b.opcion) return 1
+                    if (a.opcion < b.opcion) return -1
+                    return 0
+                })
+                imprimirAlumnos(arrayAlumnos);
+                /*  arrayAlumnos.sort(function (a, b) {
+                 }) imprimirAlumnos(arrayAlumnos); */
+            }
+        }
+
+        function imprimirAlumnos(array) {
+            for (const alumno of array) {
+                let li = document.createElement("li");
+                li.textContent = alumno.nombre + " - " + alumno.apellido + " - " + alumno.nota;
+                ul.appendChild(li);
+            }
+            document.body.appendChild(ul);
+
+        }
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

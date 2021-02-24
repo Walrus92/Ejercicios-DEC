@@ -15,7 +15,6 @@ function init() {
             return respuesta.json();
         }).then(function (datos) {
             //llamo a funcion escritora, pasando como parametro los datos devueltos del servidor
-            //console.log(datos);
             escribirTabla(datos);
         })
 
@@ -66,11 +65,6 @@ function enviarIncidencia() {
         }
 
         fetch("server.php", params)
-        /*    .then(function (res) {
-               return res.text();
-           }).then(function (data) {
-               console.log(data);
-           }) */
     }
 
     //limpio el campo de texto

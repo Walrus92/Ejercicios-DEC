@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = init;
+
+        function init() {
+
+            function CodCuentaBancaria(nombre, apellidos, dni) {
+                this.nombre = nombre
+                this.apellidos = apellidos
+                this.dni = dni
+                this.saldo = 1000
+                this.movimientos = []
+            }
+            CodCuentaBancaria.prototype.ingresar = function (cantidad) {
+                this.movimientos.push(Math.abs(cantidad))
+                this.saldo += (Math.abs(cantidad))
+                console.log("ingresado: " + cantidad);
+            }
+            CodCuentaBancaria.prototype.descontar = function (cantidad) {
+                if (this.saldo >= 0) {
+                    let negativo = Math.abs(cantidad) * -1
+                    this.movimientos.push(negativo)
+                    this.saldo += (negativo)
+                    console.log("descontado: " + negativo);
+                } else {
+                    console.log("No te queda pasta!");
+                    return;
+                }
+            }
+
+            CodCuentaBancaria.prototype.imprimeMovimientos = function () {
+                let sum = 0
+                for (let i = this.movimientos.length - 1; i >= 0; i--) {
+                    if (sum == 10) {
+                        return
+                    }
+                    console.log(this.movimientos[i]);
+                    sum++
+                }
+                console.log(this.saldo);
+            }
+
+            var cantidad;
+            document.getElementById("newC").onclick = function () {
+                event.preventDefault()
+                let name = document.getElementById("name").value
+                let surname = document.getElementById("surname").value
+                let dni = document.getElementById("dni").value
+
+                let cliente = new CodCuentaBancaria(name, surname, dni)
+
+                var cantidad = document.createElement("input")
+                cantidad.setAttribute("type", "number")
+                cantidad.setAttribute("placeholder", "Introduzca cantidad")
+                document.body.appendChild(cantidad)
+
+                let ingreso = document.createElement("button")
+                ingreso.innerHTML = "Ingresar"
+                document.body.appendChild(ingreso)
+
+                ingreso.onclick = function () {
+                    event.preventDefault()
+                    cliente.ingresar(cantidad.value)
+                }
+
+                let descuento = document.createElement("button")
+                descuento.innerHTML = "Descontar"
+                document.body.appendChild(descuento)
+
+                descuento.onclick = function () {
+                    event.preventDefault()
+                    cliente.descontar(cantidad.value)
+                }
+
+                let movs = document.createElement("button")
+                movs.innerHTML = "Ver movimientos"
+                document.body.appendChild(movs)
+
+                movs.onclick = function () {
+                    event.preventDefault()
+                    cliente.imprimeMovimientos()
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <p>Introduzca nombre: <input id="name" type="text"></p>
+    <p>Introduzca apellidos: <input id="surname" type="text"></p>
+    <p>Introduzca dni: <input id="dni" type="text"></p>
+    <p><input id="newC" type="submit" value="Enviar"></p>
+</body>
+
+</html>

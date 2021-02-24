@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        function Punto(x, y) {
+            this.x = x;
+            this.y = y;
+        }
+
+        function Cuadrado(puntoX, puntoY) {
+            this.a = puntoX;
+            this.b = puntoY;
+        }
+
+        Cuadrado.prototype.getArea = function () {
+            var anchura = this.b.x - this.a.x;
+            var altura = this.b.y - this.a.y
+            return anchura * altura;
+        }
+        Cuadrado.prototype.getPerimetro = function () {
+            return ((this.b.x - this.a.x) + (this.b.y - this.a.y)) * 2;
+        }
+
+        let puntoA = new Punto(0, 0);
+        let puntoB = new Punto(5, 5);
+        let cuadrado = new Cuadrado(puntoA, puntoB)
+        let area = cuadrado.getArea();
+        let perimetro = cuadrado.getPerimetro();
+        console.log(area);
+        console.log(perimetro);
+    </script>
+</body>
+
+</html>

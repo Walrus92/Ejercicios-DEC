@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>5-4</title>
+    <script>
+        function hazAjax(url) {
+            /* fetch(url)
+                .then(function (res) {
+                    return res.text()
+                })  */
+            return new Promise(function (bien) {
+                let xhr = new XMLHttpRequest()
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState == 4) {
+                        bien(this)
+                    }
+                }
+                xhr.open("GET", url)
+                xhr.send()
+            })
+        }
+
+
+        window.addEventListener("load", function () {
+            var req = hazAjax("servidor.php")
+            req.then(function (respuesta) {
+                console.log("Repuesta recibida: " + respuesta.responseText)
+            })
+        })
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

@@ -16,19 +16,19 @@ elseif ($_POST['option'] == "descargar") {
     }
 
     $a1 = new Alumno();
-    $a1->nombre = "Manuel";
+    $a1->nombre = "Ivan";
 
     $a2 = new Alumno();
-    $a2->nombre = "Sandra";
+    $a2->nombre = "Said";
 
     $a3 = new Alumno();
-    $a3->nombre = "Luis";
+    $a3->nombre = "Alex";
 
     $a4 = new Alumno();
-    $a4->nombre = "Elena";
+    $a4->nombre = "Jorge";
 
     $a5 = new Alumno();
-    $a5->nombre = "Nicolas";
+    $a5->nombre = "Marin";
 
     $alumnos = array($a1, $a2, $a3, $a4, $a5);
 

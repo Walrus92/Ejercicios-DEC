@@ -1,16 +1,6 @@
-Maria		efafaef
-Miguel		aefaef
-Lorena		aefaefaef
-Pedro		aefaefaef
-Maria		hrshsrh
-Maria		ahrahbnar
-Maria		Probando again
-Maria		Con css funco?
-Miguel		UYYeeah
-Maria		2e
-Maria		No imprime nada
-Maria		Prueba sin then en fetch
-Maria		gadgdagd
-Miguel		Ivan es feo
-Maria		oekokg
-Manuel		Me cagoennn
+Ivan		marica
+Ivan		marica
+Ivan		lento
+Ivan		lento
+Said		rapido
+Jorge		Gitano
