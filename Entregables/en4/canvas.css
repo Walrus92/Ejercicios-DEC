@@ -1,0 +1,9 @@
+* {
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+canvas {
+    background-color: gainsboro;
+    display: block;
+}

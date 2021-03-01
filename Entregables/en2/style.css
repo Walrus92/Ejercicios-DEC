@@ -1,0 +1,108 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0 auto;
+}
+
+.border {
+    border: 2px solid #98c0e6;
+    width: 50%;
+}
+
+.no-border {
+    border: 0px;
+}
+
+.main {
+    display: flex;
+    flex-flow: row nowrap;
+    width: 80%;
+    height: 100%;
+    margin: 2% 10%;
+}
+
+body>header {
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    font-size: 2em;
+    background-color: cornflowerblue;
+    font-weight: bolder;
+    color: whitesmoke;
+}
+
+form {
+    height: 250px;
+}
+
+#cabeceraTarea {
+    font-size: 25px;
+    font-weight: bold;
+    height: 50px;
+    line-height: 50px;
+    text-align: center
+}
+
+#tituloTarea {
+    width: 100%;
+    padding: 5px;
+}
+
+#textoTarea {
+    padding: 5px;
+    width: 100%;
+    height: 150px;
+}
+
+.left, .right {
+    width: 50%;
+    margin: 0 2%;
+}
+
+.boton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #1e91ff;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 3% 0 0 0;
+}
+
+ul li {
+    border: 1px solid #ddd;
+    background-color: #f6f6f6;
+    padding: 12px;
+}
+
+ul li:hover {
+    border: 2px solid rgb(0, 0, 0);
+    background-color: #7c7c7c;
+    color: white;
+}
+
+.right {
+    align-self: flex-start;
+    max-height: 400px;
+}
+
+#descripcion {
+    display: flex;
+    flex-flow: column nowrap;
+}
+
+#cabeceraTarea {
+    color: #0d6fca;
+}
+
+#descripcion input {
+    justify-self: flex-end;
+    align-self: center;
+    color: #e03829;
+    margin-top: 10%;
+}

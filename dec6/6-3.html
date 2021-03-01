@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            var ctxt = document.querySelector("canvas").getContext("2d")
+
+            var triangulo = new Triangulo();
+            triangulo.mover()
+            window.addEventListener("keydown", function (ev) {
+                if (ev.key == "ArrowLeft") {
+                    ev.preventDefault()
+                    triangulo.x -= 10
+                    triangulo.mover()
+                }
+                if (ev.key == "ArrowRight") {
+                    ev.preventDefault()
+                    triangulo.x += 10
+                    triangulo.mover()
+                }
+                if (ev.key == "ArrowDown") {
+                    ev.preventDefault()
+                    triangulo.y += 10
+                    triangulo.mover()
+                }
+                if (ev.key == "ArrowUp") {
+                    ev.preventDefault()
+                    triangulo.y -= 10
+                    triangulo.mover()
+                }
+            })
+
+            function Triangulo(x = 50, y = 100) {
+                this.x = x
+                this.y = y
+                Triangulo.prototype.mover = function () {
+                    ctxt.clearRect(0, 0, 500, 500)
+                    ctxt.beginPath()
+                    ctxt.moveTo(this.x, this.y)
+                    ctxt.lineTo(this.x + 50, this.y + 100)
+                    ctxt.lineTo(this.x - 50, this.y + 100)
+                    ctxt.lineTo(this.x, this.y)
+                    ctxt.closePath()
+                    ctxt.fill()
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <canvas width="500px" height="500px"></canvas>
+</body>
+
+</html>

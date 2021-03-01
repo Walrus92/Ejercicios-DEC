@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de tareas</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>TO-DO List</header>
+    <div class="main">
+        <div class="left">
+            <form>
+                <input type="text" id="tituloTarea" placeholder="Título de la tarea">
+                <textarea id="textoTarea" placeholder="Descripción de la tarea..."></textarea>
+                <div class="boton">
+                    <input type="button" value="Crear" id="botonCrear">
+                </div>
+            </form>
+
+            <ul id="listaTareas">
+            </ul>
+        </div>
+        <div class="right">
+            <div id="descripcion">
+                <header id="cabeceraTarea"></header>
+                <p id="textoDescripcion"></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function () {
+            var canvas = document.querySelector("canvas")
+            var ctxt = canvas.getContext("2d")
+            var arrayCuadrados = []
+            //creo 50 cuadrados que rellenen el ancho del vp
+            var x = 0
+            for (let i = 0; i < 10; i++) {
+                arrayCuadrados[i] = new Cuadrado(x)
+                x += 100
+                console.log(arrayCuadrados[i].x);
+            }
+            setInterval(llover, 600)
+
+            function llover() {
+                for (let i = 0; i < arrayCuadrados.length; i++) {
+                    arrayCuadrados[i].llover();
+                }
+            }
+
+            function Cuadrado(x) {
+                this.x = x
+                this.y = -10
+                this.w = 100
+                this.h = 100
+                ctxt.fillRect(this.x, this.y, this.w, this.h)
+
+                Cuadrado.prototype.llover = function () {
+                    ctxt.fillRect(this.x, this.y + 100, this.w, this.h)
+                    ctxt.fill()
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <canvas width="1000px" height="1000px"></canvas>
+</body>
+
+</html>
