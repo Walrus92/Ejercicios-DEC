@@ -1,22 +1,31 @@
 window.onload = init
+
+
 var primer_click = true
 var arrayRects = []
 var arrayPuntos = []
-localStorage.setItem("rectSaved", JSON.stringify(arrayRects))
 
-function cargarRectangulos() {
-    let rectSaved = localStorage.getItem("rectSaved")
-    let rectSavedJSON = JSON.parse(rectSaved)
-    for (const rect of rectSavedJSON) {
-        rect.dibujar()
-        console.log("NO FUNCA");
+
+function cargarRectangulos(ctxt) {
+    if (localStorage.rectSaved) {
+        let rectSaved = localStorage.rectSaved
+        let rectSavedJSON = JSON.parse(rectSaved)
+        for (let i = 0; i < rectSavedJSON.length; i++) {
+            let anchura = (rectSavedJSON[i].b.x - rectSavedJSON[i].a.x)
+            let altura = (rectSavedJSON[i].b.y - rectSavedJSON[i].a.y)
+            ctxt.fillRect(Math.abs(rectSavedJSON[i].a.x), Math.abs(rectSavedJSON[i].a.y), anchura, altura)
+        }
+    } else {
+        return
     }
 }
 
 function init() {
-    cargarRectangulos()
     let canvas = document.querySelector("canvas")
     let ctxt = canvas.getContext("2d")
+
+    cargarRectangulos(ctxt)
+
 
     canvas.onclick = function (ev) {
         let punto = new Punto(ev.offsetX, ev.offsetY)
@@ -30,7 +39,7 @@ function init() {
             primer_click = true
 
             var rect = new Rectangulo(arrayPuntos['puntoA'], arrayPuntos['puntoB'])
-            rect.dibujar();
+            rect.dibujar(arrayPuntos['puntoA'], arrayPuntos['puntoB']);
             arrayRects.push(rect)
             localStorage.setItem("rectSaved", JSON.stringify(arrayRects))
         }
@@ -41,7 +50,6 @@ function init() {
             this.y = y
         }
         imprimir() {
-            // ctxt.clearRect(0, 0, 800, 600)
             ctxt.beginPath()
             ctxt.arc(this.x, this.y, 0.8, 0, 2 * Math.PI)
             ctxt.fill()
@@ -57,8 +65,7 @@ function init() {
             let anchura = (this.b.x - this.a.x)
             let altura = (this.b.y - this.a.y)
 
-            /*  ctxt.clearRect(0, 0, 800, 600) */
-            ctxt.strokeRect(Math.abs(this.a.x), Math.abs(this.a.y), anchura, altura)
+            ctxt.fillRect(Math.abs(this.a.x), Math.abs(this.a.y), anchura, altura)
         }
     }
 

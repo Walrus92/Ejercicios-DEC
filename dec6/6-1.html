@@ -9,6 +9,7 @@
     <script>
         window.onload = function () {
             var resultado = document.querySelector(".data")
+            resultado.innerHTML = (localStorage.getItem("nombre"))
 
             document.querySelector(".boton").onclick = function () {
                 localStorage.setItem("nombre", document.querySelector("#name").value)
