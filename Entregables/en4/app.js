@@ -2,7 +2,11 @@ window.onload = init
 
 
 var primer_click = true
-var arrayRects = []
+if (localStorage.rectSaved) {
+    var arrayRects = JSON.parse(localStorage.rectSaved)
+} else {
+    var arrayRects = []
+}
 var arrayPuntos = []
 
 
@@ -15,9 +19,7 @@ function cargarRectangulos(ctxt) {
             let altura = (rectSavedJSON[i].b.y - rectSavedJSON[i].a.y)
             ctxt.fillRect(Math.abs(rectSavedJSON[i].a.x), Math.abs(rectSavedJSON[i].a.y), anchura, altura)
         }
-    } else {
-        return
-    }
+    } else return
 }
 
 function init() {
@@ -25,7 +27,6 @@ function init() {
     let ctxt = canvas.getContext("2d")
 
     cargarRectangulos(ctxt)
-
 
     canvas.onclick = function (ev) {
         let punto = new Punto(ev.offsetX, ev.offsetY)
@@ -38,10 +39,11 @@ function init() {
             arrayPuntos['puntoB'] = punto
             primer_click = true
 
-            var rect = new Rectangulo(arrayPuntos['puntoA'], arrayPuntos['puntoB'])
+            let rect = new Rectangulo(arrayPuntos['puntoA'], arrayPuntos['puntoB'])
             rect.dibujar(arrayPuntos['puntoA'], arrayPuntos['puntoB']);
             arrayRects.push(rect)
             localStorage.setItem("rectSaved", JSON.stringify(arrayRects))
+            console.log(arrayRects);
         }
     }
     class Punto {
@@ -64,7 +66,7 @@ function init() {
         dibujar() {
             let anchura = (this.b.x - this.a.x)
             let altura = (this.b.y - this.a.y)
-
+            ctxt.fillStyle = "rgba(125, 48, 48, 0.534)"
             ctxt.fillRect(Math.abs(this.a.x), Math.abs(this.a.y), anchura, altura)
         }
     }
