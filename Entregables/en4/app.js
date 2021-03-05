@@ -17,6 +17,7 @@ function cargarRectangulos(ctxt) {
         for (let i = 0; i < rectSavedJSON.length; i++) {
             let anchura = (rectSavedJSON[i].b.x - rectSavedJSON[i].a.x)
             let altura = (rectSavedJSON[i].b.y - rectSavedJSON[i].a.y)
+            ctxt.fillStyle = "rgba(125, 48, 48, 0.534)"
             ctxt.fillRect(Math.abs(rectSavedJSON[i].a.x), Math.abs(rectSavedJSON[i].a.y), anchura, altura)
         }
     } else return
