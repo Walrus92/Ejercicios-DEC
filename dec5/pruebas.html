@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <canvas height="500" width="500"></canvas>
+    <script>
+        function Wal() {
+            this.nombre = "Rupi"
+        }
+        Wal.prototype.peso = 54
+
+        let w = new Wal();
+        w.__proto__.edad = 35
+
+        console.log(w.__proto__);
+        console.log(Wal.prototype);
+        console.log(Object.prototype);
+        let w2 = new Wal()
+        console.log(w2);
+
+        canvas = document.querySelector("canvas")
+        ctxt = canvas.getContext("2d")
+        /* ctxt.strokeStyle = '2px'
+        ctxt.strokeStyle = 'red'
+        ctxt.strokeRect(0, 0, 76, 76)
+        // Creamos un rectangulo verde
+        ctxt.fillStyle = 'green'
+        ctxt.fillRect(1, 1, 75, 75)
+         */
+        ctxt.beginPath()
+        ctxt.moveTo(10, 0)
+        ctxt.lineTo(20, 15)
+        ctxt.lineTo(0, 15)
+        ctxt.lineTo(10, 0)
+        ctxt.fill()
+    </script>
+</body>
+
+</html>
